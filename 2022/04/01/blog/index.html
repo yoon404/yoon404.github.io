@@ -1,0 +1,217 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Hexo | Hexo</title><meta name="author" content="John Doe"><meta name="copyright" content="John Doe"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Docker搭建个人博客–Halo和WordPress1、Docker安装Halo与MySQL教程用Docker安装个人博客的好处 Halo官方文档 0x00 创建 Docker 自定义桥接网络docker network create halo-net 0x01 拉取 MySQL 镜像docker pull mysql:8.0.27 0x02 创建 MySQL 数据目录12[root@yoon">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2022/04/01/blog/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Docker搭建个人博客–Halo和WordPress1、Docker安装Halo与MySQL教程用Docker安装个人博客的好处 Halo官方文档 0x00 创建 Docker 自定义桥接网络docker network create halo-net 0x01 拉取 MySQL 镜像docker pull mysql:8.0.27 0x02 创建 MySQL 数据目录12[root@yoon">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+<meta property="article:published_time" content="2022-04-01T11:56:58.682Z">
+<meta property="article:modified_time" content="2022-04-01T11:55:50.278Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2022/04/01/blog/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Hexo',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-04-01 19:55:50'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.1.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">3</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Hexo</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">No title</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2022-04-01T11:56:58.682Z" title="Created 2022-04-01 19:56:58">2022-04-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2022-04-01T11:55:50.278Z" title="Updated 2022-04-01 19:55:50">2022-04-01</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Docker搭建个人博客–Halo和WordPress"><a href="#Docker搭建个人博客–Halo和WordPress" class="headerlink" title="Docker搭建个人博客–Halo和WordPress"></a>Docker搭建个人博客–Halo和WordPress</h1><h2 id="1、Docker安装Halo与MySQL教程"><a href="#1、Docker安装Halo与MySQL教程" class="headerlink" title="1、Docker安装Halo与MySQL教程"></a>1、Docker安装Halo与MySQL教程</h2><p>用Docker安装个人博客的好处</p>
+<p><a target="_blank" rel="noopener" href="https://docs.halo.run/getting-started/install/other/docker-mysql">Halo官方文档</a></p>
+<h3 id="0x00-创建-Docker-自定义桥接网络"><a href="#0x00-创建-Docker-自定义桥接网络" class="headerlink" title="0x00 创建 Docker 自定义桥接网络"></a>0x00 创建 Docker 自定义桥接网络</h3><p><code>docker network create halo-net</code></p>
+<h3 id="0x01-拉取-MySQL-镜像"><a href="#0x01-拉取-MySQL-镜像" class="headerlink" title="0x01 拉取 MySQL 镜像"></a>0x01 拉取 <code>MySQL</code> 镜像</h3><p><code>docker pull mysql:8.0.27</code></p>
+<h3 id="0x02-创建-MySQL-数据目录"><a href="#0x02-创建-MySQL-数据目录" class="headerlink" title="0x02 创建 MySQL 数据目录"></a>0x02 创建 <code>MySQL</code> 数据目录</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@yoon ~]<span class="comment"># mkdir -p ~/.halo/mysql</span></span><br><span class="line">[root@yoon ~]<span class="comment"># rootdocker run --name halo-mysql -v ~/.halo/mysql:/var/lib/mysql -p 3307:33077 -e MYSQL_ROOT_PASSWORD=123456 --net halo-net --restart=unless-stopped -d mysql:8.0.27</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">释义</span></span><br><span class="line"><span class="string">-e</span> <span class="string">MYSQL_ROOT_PASSWORD=123455:</span> <span class="string">指定MySQL的登录密码为</span> <span class="number">123456</span></span><br><span class="line"><span class="string">-v</span> <span class="string">~/.halo/mysql:/var/lib/mysql</span> <span class="string">命令:</span> <span class="string">将宿主机的目录</span> <span class="string">~/.halo/mysql</span> <span class="string">挂载到容器内部的目录</span> <span class="string">/var/lib/mysql，默认情况下</span> <span class="string">MySQL</span> <span class="string">将向</span> <span class="string">~/.halo/mysql</span> <span class="string">写入其数据文件。</span></span><br><span class="line"><span class="string">--net</span> <span class="attr">halo-net:</span> <span class="string">将该容器加入到</span> <span class="string">halo-net</span> <span class="string">网络,连接到</span> <span class="string">halo-net</span> <span class="string">网络的任何其他容器都可以访问</span> <span class="string">halo-mysql容器上的所有端口。</span></span><br><span class="line"><span class="string">-p</span> <span class="number">3307</span><span class="string">:33077</span> <span class="string">将docker的33077端口映射到主机的3307端口</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="0x03-进入-MySQL-容器中登录-MySQL-并创建-Halo-需要的数据库"><a href="#0x03-进入-MySQL-容器中登录-MySQL-并创建-Halo-需要的数据库" class="headerlink" title="0x03 进入 MySQL 容器中登录 MySQL 并创建 Halo 需要的数据库"></a>0x03 进入 MySQL 容器中登录 MySQL 并创建 Halo 需要的数据库</h3><ul>
+<li>(1) halo-mysql 为 MySQL 实例的容器名称</li>
+</ul>
+<p>进入halo-mysql容器</p>
+<p><code>docker exec -it halo-mysql /bin/bash</code></p>
+<p>修改&#x2F;etc&#x2F;mysql&#x2F;my.cnf</p>
+<p>① 首先测试容器是否有vim或者vi命令</p>
+<p><img src="https://img-blog.csdnimg.cn/20200702173145766.png" alt="在这里插入图片描述"></p>
+<p>在图中可看到无vim包，<font color="red">apt-get换源下载vim</font>，国内访问镜像站实在是太慢了，所以需要换源，但是因为无法编辑文件，所以需要绕一下。因为该源是不用GPG验证的，可能不安全，但因为docker容器没有验证GPG的工具所以只能先用这个源，最后再换回正式源。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">复制原文件备份</span></span><br><span class="line">mv /etc/apt/sources.list /etc/apt/sources.list.bak</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">修改sources.list</span></span><br><span class="line">cat &lt;&lt;EOF &gt;/etc/apt/sources.list</span><br><span class="line">deb http://mirrors.ustc.edu.cn/debian stable main contrib non-free</span><br><span class="line">deb http://mirrors.ustc.edu.cn/debian stable-updates main contrib non-free</span><br><span class="line">EOF</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">更新apt</span></span><br><span class="line">apt update</span><br><span class="line"><span class="meta prompt_"> </span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">安装vim命令</span></span><br><span class="line">apt install vim</span><br><span class="line"><span class="meta prompt_"> </span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">还原sources.list文件</span></span><br><span class="line">mv /etc/apt/sources.list.bak /etc/apt/sources.list</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">修改mysql端口号</span></span><br><span class="line">vim /etc/mysql/my.cnf</span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20220331165036530.png" alt="image-20220331165036530"></p>
+<p>修改后的docker中mysql端口号为33077</p>
+<p>重启mysql</p>
+<p><code>docker restart halo-mysql</code></p>
+<p>使用<font color="red"><code>dcoker logs docker_name</code></font>可以查看docker日志</p>
+<ul>
+<li>(2) 登录 MySQL</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>(3) 输入 MySQL 数据库密码</li>
+<li>(4) 创建数据库</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#查看端口号</span><br><span class="line">show global variables like &#x27;port&#x27;;</span><br><span class="line">create database halodb character set utf8mb4 collate utf8mb4_bin;</span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20220331170436689.png" alt="image-20220331170436689"></p>
+<p><font color="greem">使用Navicat测试能否连接IP:3307的数据库</font></p>
+<ul>
+<li>(5) 使用 <code>exit</code>退出<code>MySQL</code> 并退出容器</li>
+</ul>
+<h3 id="0x04-创建-Halo-工作目录"><a href="#0x04-创建-Halo-工作目录" class="headerlink" title="0x04 创建 Halo 工作目录"></a>0x04 创建 <code>Halo</code> 工作目录</h3><p><code>mkdir ~/.halo &amp;&amp; cd ~/.halo</code></p>
+<h3 id="0x05-下载示例配置文件到工作目录"><a href="#0x05-下载示例配置文件到工作目录" class="headerlink" title="0x05 下载示例配置文件到工作目录"></a>0x05 下载示例配置文件到<a target="_blank" rel="noopener" href="https://docs.halo.run/getting-started/prepare#%E5%B7%A5%E4%BD%9C%E7%9B%AE%E5%BD%95">工作目录</a></h3> <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://dl.halo.run/config/application-template.yaml -O ./application.yaml</span><br></pre></td></tr></table></figure>
+
+<h3 id="0x06-编辑配置文件，配置数据库，其他配置请参考参考配置"><a href="#0x06-编辑配置文件，配置数据库，其他配置请参考参考配置" class="headerlink" title="0x06 编辑配置文件，配置数据库，其他配置请参考参考配置"></a>0x06 编辑配置文件，配置数据库，其他配置请参考<a target="_blank" rel="noopener" href="https://docs.halo.run/getting-started/config">参考配置</a></h3><p><code>vim application.yaml</code></p>
+<p>你需要做如下几个步骤：</p>
+<ul>
+<li>注释 H2 database configuration.部分</li>
+<li>启用 MySQL database configuration.部分</li>
+<li>修改 datasource 下的 url 中的 ip 地址部分为容器名称并修改密码为您设定的 <code>MySQL</code> 密码</li>
+</ul>
+<p>修改后的内容如下:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">datasource:</span></span><br><span class="line">    <span class="attr">driver-class-name:</span> <span class="string">com.mysql.cj.jdbc.Driver</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">jdbc:mysql://halo-mysql:3307/halodb?characterEncoding=utf8&amp;useSSL=false&amp;serverTimezone=Asia/Shanghai&amp;allowPublicKeyRetrieval=true</span></span><br><span class="line">    <span class="attr">username:</span> <span class="string">root</span></span><br><span class="line">    <span class="attr">password:</span> <span class="number">123456</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="0x07-创建Halo容器实例"><a href="#0x07-创建Halo容器实例" class="headerlink" title="0x07 创建Halo容器实例"></a>0x07 创建Halo容器实例</h3><p><code>docker run -it -d --name halo -p 8090:8090 -v ~/.halo:/root/.halo --net halo-net --restart=unless-stopped halohub/halo:1.5.1</code></p>
+<h3 id="0x08-打开-http-ip-端口号-即可看到安装引导界面"><a href="#0x08-打开-http-ip-端口号-即可看到安装引导界面" class="headerlink" title="0x08 打开 http://ip:端口号 即可看到安装引导界面"></a>0x08 打开 <code>http://ip:端口号</code> 即可看到安装引导界面</h3><p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20220331171010252.png" alt="image-20220331171010252"></p>
+<h3 id="0x09-如果有域名，可以使用-Caddy-进行反向代理"><a href="#0x09-如果有域名，可以使用-Caddy-进行反向代理" class="headerlink" title="0x09 如果有域名，可以使用 Caddy 进行反向代理"></a>0x09 如果有域名，可以使用 Caddy 进行反向代理</h3><h4 id="1、安装caddy"><a href="#1、安装caddy" class="headerlink" title="1、安装caddy"></a>1、安装caddy</h4><p>caddy目前是不支持centos8的，所以我的服务器版本是centos 7.6</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">安装 Caddy 软件包，-y代表下载过程不询问</span></span><br><span class="line">yum install caddy -y</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">下载 Halo 官方的 Caddy 配置模板</span></span><br><span class="line">curl -o /etc/caddy/conf.d/Caddyfile.conf --create-dirs https://dl.halo.run/config/Caddyfile</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">使用 vim 编辑 Caddyfile</span></span><br><span class="line">vim /etc/caddy/conf.d/Caddyfile.conf</span><br></pre></td></tr></table></figure>
+
+<p>Caddyfile.conf模板如下：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">https://www.simple.com</span> &#123;</span><br><span class="line"> <span class="string">gzip</span></span><br><span class="line"> <span class="string">tls</span> <span class="string">xxxx@xxx.xx</span></span><br><span class="line"> <span class="string">proxy</span> <span class="string">/</span> <span class="string">localhost:port</span> &#123;</span><br><span class="line">  <span class="string">transparent</span></span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>把 <a target="_blank" rel="noopener" href="https://www.simple.com/">https://www.simple.com</a> 改为自己的域名，即自己申请的域名。</li>
+<li>tls 后面的 <a href="mailto:&#120;&#x78;&#x78;&#120;&#64;&#x78;&#120;&#120;&#46;&#x78;&#120;">&#120;&#x78;&#x78;&#120;&#64;&#x78;&#120;&#120;&#46;&#x78;&#120;</a> 改为自己的邮箱地址，这是用于自动申请 SSL 证书用的。需要注意的是，不需要你自己配置 SSL 证书，而且会自动帮你续签。</li>
+<li>localhost:port 请将 port 修改为 Halo 的运行端口，默认为 8090。</li>
+</ol>
+<h4 id="2、修改完成后启动Caddy服务"><a href="#2、修改完成后启动Caddy服务" class="headerlink" title="2、修改完成后启动Caddy服务"></a>2、修改完成后启动Caddy服务</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">开启自启 Caddy 服务</span></span><br><span class="line">systemctl enable caddy</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">启动 Caddy</span></span><br><span class="line">service caddy start</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">停止运行 Caddy</span></span><br><span class="line">service caddy stop</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">重启 Caddy</span></span><br><span class="line">service caddy restart</span><br></pre></td></tr></table></figure>
+
+<p>到这里，关于 Caddy 反向代理的配置也就完成了，现在你可以访问一下自己的域名，并进行 Halo 的初始化了。<br>如果访问不了，可能是80号端口被占用了，查看一下80号端口使用情况。<br>要注意一点是博客地址应改为你的域名地址，否则会造成资源获取不成功。</p>
+<p>直接用域名访问Halo即可。</p>
+<p><a target="_blank" rel="noopener" href="https://halo.run/themes.html">Halo主题仓库</a></p>
+<h2 id="2、Wordpress安装"><a href="#2、Wordpress安装" class="headerlink" title="2、Wordpress安装"></a>2、Wordpress安装</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">创建容器</span></span><br><span class="line">docker run --name wordpress -p 8081:80 --net halo-net --restart=unless-stopped -e WORDPRESS_DB_USER=root -e WORDPRESS_DB_PASSWORD=123456 -e WORDPRESS_DB_NAME=wordpress -d wordpress</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">打开容器</span></span><br><span class="line">docker exec -it wordpress /bin/bash</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">进行步骤0x03安装vim</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">打开wp-config.php，查看数据库连接参数是否争取</span></span><br><span class="line">vim wp-config.php</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">John Doe</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://example.com/2022/04/01/blog/">http://example.com/2022/04/01/blog/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2022/04/01/My-New-Post/"><img class="next-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">My New Post</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">John Doe</div><div class="author-info__description"></div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">3</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Docker%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E2%80%93Halo%E5%92%8CWordPress"><span class="toc-number">1.</span> <span class="toc-text">Docker搭建个人博客–Halo和WordPress</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81Docker%E5%AE%89%E8%A3%85Halo%E4%B8%8EMySQL%E6%95%99%E7%A8%8B"><span class="toc-number">1.1.</span> <span class="toc-text">1、Docker安装Halo与MySQL教程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#0x00-%E5%88%9B%E5%BB%BA-Docker-%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A1%A5%E6%8E%A5%E7%BD%91%E7%BB%9C"><span class="toc-number">1.1.1.</span> <span class="toc-text">0x00 创建 Docker 自定义桥接网络</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x01-%E6%8B%89%E5%8F%96-MySQL-%E9%95%9C%E5%83%8F"><span class="toc-number">1.1.2.</span> <span class="toc-text">0x01 拉取 MySQL 镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x02-%E5%88%9B%E5%BB%BA-MySQL-%E6%95%B0%E6%8D%AE%E7%9B%AE%E5%BD%95"><span class="toc-number">1.1.3.</span> <span class="toc-text">0x02 创建 MySQL 数据目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x03-%E8%BF%9B%E5%85%A5-MySQL-%E5%AE%B9%E5%99%A8%E4%B8%AD%E7%99%BB%E5%BD%95-MySQL-%E5%B9%B6%E5%88%9B%E5%BB%BA-Halo-%E9%9C%80%E8%A6%81%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.1.4.</span> <span class="toc-text">0x03 进入 MySQL 容器中登录 MySQL 并创建 Halo 需要的数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x04-%E5%88%9B%E5%BB%BA-Halo-%E5%B7%A5%E4%BD%9C%E7%9B%AE%E5%BD%95"><span class="toc-number">1.1.5.</span> <span class="toc-text">0x04 创建 Halo 工作目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x05-%E4%B8%8B%E8%BD%BD%E7%A4%BA%E4%BE%8B%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%88%B0%E5%B7%A5%E4%BD%9C%E7%9B%AE%E5%BD%95"><span class="toc-number">1.1.6.</span> <span class="toc-text">0x05 下载示例配置文件到工作目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x06-%E7%BC%96%E8%BE%91%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%EF%BC%8C%E9%85%8D%E7%BD%AE%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%8C%E5%85%B6%E4%BB%96%E9%85%8D%E7%BD%AE%E8%AF%B7%E5%8F%82%E8%80%83%E5%8F%82%E8%80%83%E9%85%8D%E7%BD%AE"><span class="toc-number">1.1.7.</span> <span class="toc-text">0x06 编辑配置文件，配置数据库，其他配置请参考参考配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x07-%E5%88%9B%E5%BB%BAHalo%E5%AE%B9%E5%99%A8%E5%AE%9E%E4%BE%8B"><span class="toc-number">1.1.8.</span> <span class="toc-text">0x07 创建Halo容器实例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x08-%E6%89%93%E5%BC%80-http-ip-%E7%AB%AF%E5%8F%A3%E5%8F%B7-%E5%8D%B3%E5%8F%AF%E7%9C%8B%E5%88%B0%E5%AE%89%E8%A3%85%E5%BC%95%E5%AF%BC%E7%95%8C%E9%9D%A2"><span class="toc-number">1.1.9.</span> <span class="toc-text">0x08 打开 http:&#x2F;&#x2F;ip:端口号 即可看到安装引导界面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x09-%E5%A6%82%E6%9E%9C%E6%9C%89%E5%9F%9F%E5%90%8D%EF%BC%8C%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8-Caddy-%E8%BF%9B%E8%A1%8C%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86"><span class="toc-number">1.1.10.</span> <span class="toc-text">0x09 如果有域名，可以使用 Caddy 进行反向代理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81%E5%AE%89%E8%A3%85caddy"><span class="toc-number">1.1.10.1.</span> <span class="toc-text">1、安装caddy</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81%E4%BF%AE%E6%94%B9%E5%AE%8C%E6%88%90%E5%90%8E%E5%90%AF%E5%8A%A8Caddy%E6%9C%8D%E5%8A%A1"><span class="toc-number">1.1.10.2.</span> <span class="toc-text">2、修改完成后启动Caddy服务</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81Wordpress%E5%AE%89%E8%A3%85"><span class="toc-number">1.2.</span> <span class="toc-text">2、Wordpress安装</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/04/01/blog/" title="No title"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="No title"/></a><div class="content"><a class="title" href="/2022/04/01/blog/" title="No title">No title</a><time datetime="2022-04-01T11:56:58.682Z" title="Created 2022-04-01 19:56:58">2022-04-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/04/01/My-New-Post/" title="My New Post"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="My New Post"/></a><div class="content"><a class="title" href="/2022/04/01/My-New-Post/" title="My New Post">My New Post</a><time datetime="2022-04-01T11:22:54.000Z" title="Created 2022-04-01 19:22:54">2022-04-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/04/01/hello-world/" title="Hello World"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"/></a><div class="content"><a class="title" href="/2022/04/01/hello-world/" title="Hello World">Hello World</a><time datetime="2022-04-01T10:45:40.891Z" title="Created 2022-04-01 18:45:40">2022-04-01</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By John Doe</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
