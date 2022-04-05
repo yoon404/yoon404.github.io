@@ -91,7 +91,7 @@
 <meta name="description" content="1、Docker安装Halo与MySQL教程用Docker安装个人博客的好处 Halo官方文档 0x00 创建 Docker 自定义桥接网络docker network create halo-net 0x01 拉取 MySQL 镜像docker pull mysql:8.0.27 0x02 创建 MySQL 数据目录12[root@yoon ~]# mkdir -p ~&#x2F;.halo&#x2F;mysql[">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Docker搭建个人博客--Halo和WordPress">
-<meta property="og:url" content="http://example.com/2022/04/04/Docker%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-Halo%E5%92%8CWordPress/index.html">
+<meta property="og:url" content="https://yoon404.github.io/2022/04/04/Docker%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-Halo%E5%92%8CWordPress/index.html">
 <meta property="og:site_name" content="Yoon">
 <meta property="og:description" content="1、Docker安装Halo与MySQL教程用Docker安装个人博客的好处 Halo官方文档 0x00 创建 Docker 自定义桥接网络docker network create halo-net 0x01 拉取 MySQL 镜像docker pull mysql:8.0.27 0x02 创建 MySQL 数据目录12[root@yoon ~]# mkdir -p ~&#x2F;.halo&#x2F;mysql[">
 <meta property="og:locale">
@@ -135,7 +135,7 @@
 
 
 
-  <link rel="canonical" href="http://example.com/2022/04/04/Docker搭建个人博客-Halo和WordPress/"/>
+  <link rel="canonical" href="https://yoon404.github.io/2022/04/04/Docker搭建个人博客-Halo和WordPress/"/>
 
 
 
@@ -312,7 +312,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/04/Docker%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-Halo%E5%92%8CWordPress/">
+    <link itemprop="mainEntityOfPage" href="https://yoon404.github.io/2022/04/04/Docker%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-Halo%E5%92%8CWordPress/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -501,7 +501,7 @@
 
 <ol>
 <li>把 <a target="_blank" rel="noopener" href="https://www.simple.com/">https://www.simple.com</a> 改为自己的域名，即自己申请的域名。</li>
-<li>tls 后面的 <a href="mailto:&#x78;&#x78;&#120;&#x78;&#x40;&#x78;&#x78;&#120;&#46;&#120;&#x78;">&#x78;&#x78;&#120;&#x78;&#x40;&#x78;&#x78;&#120;&#46;&#120;&#x78;</a> 改为自己的邮箱地址，这是用于自动申请 SSL 证书用的。需要注意的是，不需要你自己配置 SSL 证书，而且会自动帮你续签。</li>
+<li>tls 后面的 <a href="mailto:&#120;&#120;&#120;&#120;&#x40;&#x78;&#x78;&#120;&#46;&#x78;&#x78;">&#120;&#120;&#120;&#120;&#x40;&#x78;&#x78;&#120;&#46;&#x78;&#x78;</a> 改为自己的邮箱地址，这是用于自动申请 SSL 证书用的。需要注意的是，不需要你自己配置 SSL 证书，而且会自动帮你续签。</li>
 <li>localhost:port 请将 port 修改为 Halo 的运行端口，默认为 8090。</li>
 </ol>
 <h4 id="2、修改完成后启动Caddy服务"><a href="#2、修改完成后启动Caddy服务" class="headerlink" title="2、修改完成后启动Caddy服务"></a>2、修改完成后启动Caddy服务</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">开启自启 Caddy 服务</span></span><br><span class="line">systemctl enable caddy</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">启动 Caddy</span></span><br><span class="line">service caddy start</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">停止运行 Caddy</span></span><br><span class="line">service caddy stop</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">重启 Caddy</span></span><br><span class="line">service caddy restart</span><br></pre></td></tr></table></figure>
