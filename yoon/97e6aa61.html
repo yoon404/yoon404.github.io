@@ -512,7 +512,7 @@
 
 <ol>
 <li>把 <a target="_blank" rel="noopener" href="https://www.simple.com/">https://www.simple.com</a> 改为自己的域名，即自己申请的域名。</li>
-<li>tls 后面的 <a href="mailto:&#x78;&#x78;&#x78;&#120;&#64;&#120;&#x78;&#120;&#x2e;&#120;&#x78;">&#x78;&#x78;&#x78;&#120;&#64;&#120;&#x78;&#120;&#x2e;&#120;&#x78;</a> 改为自己的邮箱地址，这是用于自动申请 SSL 证书用的。需要注意的是，不需要你自己配置 SSL 证书，而且会自动帮你续签。</li>
+<li>tls 后面的 <a href="mailto:&#120;&#120;&#120;&#x78;&#x40;&#x78;&#120;&#120;&#46;&#120;&#120;">&#120;&#120;&#120;&#x78;&#x40;&#x78;&#120;&#120;&#46;&#120;&#120;</a> 改为自己的邮箱地址，这是用于自动申请 SSL 证书用的。需要注意的是，不需要你自己配置 SSL 证书，而且会自动帮你续签。</li>
 <li>localhost:port 请将 port 修改为 Halo 的运行端口，默认为 8090。</li>
 </ol>
 <h4 id="2、修改完成后启动Caddy服务"><a href="#2、修改完成后启动Caddy服务" class="headerlink" title="2、修改完成后启动Caddy服务"></a>2、修改完成后启动Caddy服务</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">开启自启 Caddy 服务</span></span><br><span class="line">systemctl enable caddy</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">启动 Caddy</span></span><br><span class="line">service caddy start</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">停止运行 Caddy</span></span><br><span class="line">service caddy stop</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">重启 Caddy</span></span><br><span class="line">service caddy restart</span><br></pre></td></tr></table></figure>
@@ -855,6 +855,8 @@
     
 
   </div>
+  
+
 
   
 
@@ -1335,6 +1337,78 @@
   
 
   
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  
+  <script>
+    $('.highlight').each(function (i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap')
+      $(e).after($wrap)
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function (e) {
+        var code = $(this).parent().find('.code').find('.line').map(function (i, e) {
+          return $(e).text()
+        }).toArray().join('\n')
+        var ta = document.createElement('textarea')
+        document.body.appendChild(ta)
+        ta.style.position = 'absolute'
+        ta.style.top = '0px'
+        ta.style.left = '0px'
+        ta.value = code
+        ta.select()
+        ta.focus()
+        var result = document.execCommand('copy')
+        document.body.removeChild(ta)
+        
+          if(result)$(this).text('复制成功')
+          else $(this).text('复制失败')
+        
+        $(this).blur()
+      })).on('mouseleave', function (e) {
+        var $b = $(this).find('.copy-btn')
+        setTimeout(function () {
+          $b.text('复制')
+        }, 300)
+      }).append(e)
+    })
+  </script>
+
 
 </body>
 </html>
