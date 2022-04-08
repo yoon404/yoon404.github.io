@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>Docker搭建个人博客--Halo和WordPress</title>
-    <url>/2022/04/04/Docker%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-Halo%E5%92%8CWordPress/</url>
+    <url>/yoon/97e6aa61.html</url>
     <content><![CDATA[<h2 id="1、Docker安装Halo与MySQL教程"><a href="#1、Docker安装Halo与MySQL教程" class="headerlink" title="1、Docker安装Halo与MySQL教程"></a>1、Docker安装Halo与MySQL教程</h2><p>用Docker安装个人博客的好处</p>
 <p><a href="https://docs.halo.run/getting-started/install/other/docker-mysql">Halo官方文档</a></p>
 <h3 id="0x00-创建-Docker-自定义桥接网络"><a href="#0x00-创建-Docker-自定义桥接网络" class="headerlink" title="0x00 创建 Docker 自定义桥接网络"></a>0x00 创建 Docker 自定义桥接网络</h3><p><code>docker network create halo-net</code></p>
@@ -10,6 +10,8 @@
 <h3 id="0x02-创建-MySQL-数据目录"><a href="#0x02-创建-MySQL-数据目录" class="headerlink" title="0x02 创建 MySQL 数据目录"></a>0x02 创建 <code>MySQL</code> 数据目录</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@yoon ~]<span class="comment"># mkdir -p ~/.halo/mysql</span></span><br><span class="line">[root@yoon ~]<span class="comment"># rootdocker run --name halo-mysql -v ~/.halo/mysql:/var/lib/mysql -p 3307:33077 -e MYSQL_ROOT_PASSWORD=123456 --net halo-net --restart=unless-stopped -d mysql:8.0.27</span></span><br></pre></td></tr></table></figure>
 
 <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">释义</span></span><br><span class="line"><span class="string">-e</span> <span class="string">MYSQL_ROOT_PASSWORD=123455:</span> <span class="string">指定MySQL的登录密码为</span> <span class="number">123456</span></span><br><span class="line"><span class="string">-v</span> <span class="string">~/.halo/mysql:/var/lib/mysql</span> <span class="string">命令:</span> <span class="string">将宿主机的目录</span> <span class="string">~/.halo/mysql</span> <span class="string">挂载到容器内部的目录</span> <span class="string">/var/lib/mysql，默认情况下</span> <span class="string">MySQL</span> <span class="string">将向</span> <span class="string">~/.halo/mysql</span> <span class="string">写入其数据文件。</span></span><br><span class="line"><span class="string">--net</span> <span class="attr">halo-net:</span> <span class="string">将该容器加入到</span> <span class="string">halo-net</span> <span class="string">网络,连接到</span> <span class="string">halo-net</span> <span class="string">网络的任何其他容器都可以访问</span> <span class="string">halo-mysql容器上的所有端口。</span></span><br><span class="line"><span class="string">-p</span> <span class="number">3307</span><span class="string">:33077</span> <span class="string">将docker的33077端口映射到主机的3307端口</span></span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
 
 <h3 id="0x03-进入-MySQL-容器中登录-MySQL-并创建-Halo-需要的数据库"><a href="#0x03-进入-MySQL-容器中登录-MySQL-并创建-Halo-需要的数据库" class="headerlink" title="0x03 进入 MySQL 容器中登录 MySQL 并创建 Halo 需要的数据库"></a>0x03 进入 MySQL 容器中登录 MySQL 并创建 Halo 需要的数据库</h3><ul>
 <li>(1) halo-mysql 为 MySQL 实例的容器名称</li>
@@ -21,8 +23,6 @@
 <p><img src="http://r9ny81buh.hn-bkt.clouddn.com/blog/20200702173145766.png" alt="七牛"></p>
 <p>在图中可看到无vim包，<font color="red">apt-get换源下载vim</font>，国内访问镜像站实在是太慢了，所以需要换源，但是因为无法编辑文件，所以需要绕一下。因为该源是不用GPG验证的，可能不安全，但因为docker容器没有验证GPG的工具所以只能先用这个源，最后再换回正式源。</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">复制原文件备份</span></span><br><span class="line">mv /etc/apt/sources.list /etc/apt/sources.list.bak</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">修改sources.list</span></span><br><span class="line">cat &lt;&lt;EOF &gt;/etc/apt/sources.list</span><br><span class="line">deb http://mirrors.ustc.edu.cn/debian stable main contrib non-free</span><br><span class="line">deb http://mirrors.ustc.edu.cn/debian stable-updates main contrib non-free</span><br><span class="line">EOF</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">更新apt</span></span><br><span class="line">apt update</span><br><span class="line"><span class="meta prompt_"> </span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">安装vim命令</span></span><br><span class="line">apt install vim</span><br><span class="line"><span class="meta prompt_"> </span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">还原sources.list文件</span></span><br><span class="line">mv /etc/apt/sources.list.bak /etc/apt/sources.list</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">修改mysql端口号</span></span><br><span class="line">vim /etc/mysql/my.cnf</span><br></pre></td></tr></table></figure>
-
-<span id="more"></span>
 
 <p><img src="http://r9ny81buh.hn-bkt.clouddn.com/blog/image-20220331165036530.png"></p>
 <p>修改后的docker中mysql端口号为33077</p>
@@ -68,7 +68,7 @@
 
 <ol>
 <li>把 <a href="https://www.simple.com/">https://www.simple.com</a> 改为自己的域名，即自己申请的域名。</li>
-<li>tls 后面的 <a href="mailto:&#120;&#x78;&#x78;&#120;&#x40;&#120;&#x78;&#120;&#x2e;&#120;&#x78;">&#120;&#x78;&#x78;&#120;&#x40;&#120;&#x78;&#120;&#x2e;&#120;&#x78;</a> 改为自己的邮箱地址，这是用于自动申请 SSL 证书用的。需要注意的是，不需要你自己配置 SSL 证书，而且会自动帮你续签。</li>
+<li>tls 后面的 <a href="mailto:&#x78;&#x78;&#x78;&#120;&#64;&#120;&#120;&#120;&#x2e;&#x78;&#x78;">&#x78;&#x78;&#x78;&#120;&#64;&#120;&#120;&#120;&#x2e;&#x78;&#x78;</a> 改为自己的邮箱地址，这是用于自动申请 SSL 证书用的。需要注意的是，不需要你自己配置 SSL 证书，而且会自动帮你续签。</li>
 <li>localhost:port 请将 port 修改为 Halo 的运行端口，默认为 8090。</li>
 </ol>
 <h4 id="2、修改完成后启动Caddy服务"><a href="#2、修改完成后启动Caddy服务" class="headerlink" title="2、修改完成后启动Caddy服务"></a>2、修改完成后启动Caddy服务</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">开启自启 Caddy 服务</span></span><br><span class="line">systemctl enable caddy</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">启动 Caddy</span></span><br><span class="line">service caddy start</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">停止运行 Caddy</span></span><br><span class="line">service caddy stop</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">重启 Caddy</span></span><br><span class="line">service caddy restart</span><br></pre></td></tr></table></figure>
@@ -88,6 +88,18 @@
       <tags>
         <tag>docker</tag>
         <tag>blog</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>设计模式之单一职责原则</title>
+    <url>/yoon/c32feb96.html</url>
+    <content><![CDATA[<h3 id="1、概念"><a href="#1、概念" class="headerlink" title="1、概念"></a>1、概念</h3>]]></content>
+      <categories>
+        <category>设计模式</category>
+      </categories>
+      <tags>
+        <tag>设计模式</tag>
+        <tag>单一职责原则</tag>
       </tags>
   </entry>
 </search>
