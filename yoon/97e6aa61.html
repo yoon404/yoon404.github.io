@@ -88,6 +88,17 @@
 
 
 
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/e7e61f74.js","daovoice")
+  daovoice('init', {
+	  app_id: "e7e61f74",
+	  user_id: "NO_89757", // 必填: 该用户在您系统上的唯一ID
+	  email: "yoon404@qq.com", // 选填:  该用户在您系统上的主邮箱
+	});
+  daovoice('update');
+  </script>
+
+
 <meta name="description" content="1、Docker安装Halo与MySQL教程用Docker安装个人博客的好处 Halo官方文档 0x00 创建 Docker 自定义桥接网络docker network create halo-net 0x01 拉取 MySQL 镜像docker pull mysql:8.0.27 0x02 创建 MySQL 数据目录12[root@yoon ~]# mkdir -p ~&#x2F;.halo&#x2F;mysql[">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Docker搭建个人博客--Halo和WordPress">
@@ -100,7 +111,7 @@
 <meta property="og:image" content="http://r9ny81buh.hn-bkt.clouddn.com/blog/image-20220331170436689.png">
 <meta property="og:image" content="http://r9ny81buh.hn-bkt.clouddn.com/blog/image-20220331171010252.png">
 <meta property="article:published_time" content="2022-04-04T02:25:09.000Z">
-<meta property="article:modified_time" content="2022-04-08T09:04:29.488Z">
+<meta property="article:modified_time" content="2022-04-08T09:14:00.783Z">
 <meta property="article:author" content="Yoon">
 <meta property="article:tag" content="docker">
 <meta property="article:tag" content="blog">
@@ -115,7 +126,7 @@
     root: '',
     scheme: 'Gemini',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -501,7 +512,7 @@
 
 <ol>
 <li>把 <a target="_blank" rel="noopener" href="https://www.simple.com/">https://www.simple.com</a> 改为自己的域名，即自己申请的域名。</li>
-<li>tls 后面的 <a href="mailto:&#x78;&#x78;&#x78;&#120;&#64;&#120;&#120;&#120;&#x2e;&#x78;&#x78;">&#x78;&#x78;&#x78;&#120;&#64;&#120;&#120;&#120;&#x2e;&#x78;&#x78;</a> 改为自己的邮箱地址，这是用于自动申请 SSL 证书用的。需要注意的是，不需要你自己配置 SSL 证书，而且会自动帮你续签。</li>
+<li>tls 后面的 <a href="mailto:&#x78;&#x78;&#x78;&#120;&#64;&#120;&#x78;&#120;&#x2e;&#120;&#x78;">&#x78;&#x78;&#x78;&#120;&#64;&#120;&#x78;&#120;&#x2e;&#120;&#x78;</a> 改为自己的邮箱地址，这是用于自动申请 SSL 证书用的。需要注意的是，不需要你自己配置 SSL 证书，而且会自动帮你续签。</li>
 <li>localhost:port 请将 port 修改为 Halo 的运行端口，默认为 8090。</li>
 </ol>
 <h4 id="2、修改完成后启动Caddy服务"><a href="#2、修改完成后启动Caddy服务" class="headerlink" title="2、修改完成后启动Caddy服务"></a>2、修改完成后启动Caddy服务</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">开启自启 Caddy 服务</span></span><br><span class="line">systemctl enable caddy</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">启动 Caddy</span></span><br><span class="line">service caddy start</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">停止运行 Caddy</span></span><br><span class="line">service caddy stop</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">重启 Caddy</span></span><br><span class="line">service caddy restart</span><br></pre></td></tr></table></figure>
@@ -535,7 +546,7 @@
 		
 		
   <div style="text-align:center;color: #ccc;font-size:14px;">
-    ------ 本文结束 ------
+    ------ 本文结束<i class="fa fa-paw"></i>感谢您的阅读 ------
   </div>
 
 		
@@ -774,13 +785,20 @@
       
 
       
-        <div class="back-to-top">
-          <i class="fa fa-arrow-up"></i>
-          
-            <span id="scrollpercent"><span>0</span>%</span>
-          
-        </div>
-      
+	  
+	  
+		<script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+		<script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+		<div class="widget-wrap">
+		  <h3 class="widget-title">Tag Cloud</h3>
+		  <div id="myCanvasContainer" class="widget tagcloud">
+			  <canvas width="250" height="250" id="resCanvas" style="width=100%">
+				  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/" rel="tag">blog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99/" rel="tag">单一职责原则</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="tag-list-count">1</span></li></ul>
+			  </canvas>
+		  </div>
+		</div>
+	  
+
 
     </div>
   </aside>
@@ -825,6 +843,13 @@
       </div>
     </footer>
 
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
     
 
     

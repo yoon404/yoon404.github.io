@@ -88,6 +88,17 @@
 
 
 
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/e7e61f74.js","daovoice")
+  daovoice('init', {
+	  app_id: "e7e61f74",
+	  user_id: "NO_89757", // 必填: 该用户在您系统上的唯一ID
+	  email: "yoon404@qq.com", // 选填:  该用户在您系统上的主邮箱
+	});
+  daovoice('update');
+  </script>
+
+
 <meta name="description" content="1、概念">
 <meta property="og:type" content="article">
 <meta property="og:title" content="设计模式之单一职责原则">
@@ -96,7 +107,7 @@
 <meta property="og:description" content="1、概念">
 <meta property="og:locale">
 <meta property="article:published_time" content="2022-04-08T08:59:08.000Z">
-<meta property="article:modified_time" content="2022-04-08T09:01:28.654Z">
+<meta property="article:modified_time" content="2022-04-08T10:34:02.085Z">
 <meta property="article:author" content="Yoon">
 <meta property="article:tag" content="设计模式">
 <meta property="article:tag" content="单一职责原则">
@@ -110,7 +121,7 @@
     root: '',
     scheme: 'Gemini',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -440,6 +451,37 @@
 	<div>
       
         
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript"  src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+  <p><span>本文标题:</span><a href="/yoon/c32feb96.html">设计模式之单一职责原则</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问yoon404的个人博客">yoon404</a></p>
+  <p><span>发布时间:</span>2022年04月08日 - 16:04</p>
+  <p><span>最后更新:</span>2022年04月08日 - 18:04</p>
+  <p><span>原始链接:</span><a href="/yoon/c32feb96.html" title="设计模式之单一职责原则">https://yoon404.github.io/yoon/c32feb96.html</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://yoon404.github.io/yoon/c32feb96.html"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
       
 	</div>
 
@@ -452,7 +494,7 @@
 		
 		
   <div style="text-align:center;color: #ccc;font-size:14px;">
-    ------ 本文结束 ------
+    ------ 本文结束<i class="fa fa-paw"></i>感谢您的阅读 ------
   </div>
 
 		
@@ -691,13 +733,20 @@
       
 
       
-        <div class="back-to-top">
-          <i class="fa fa-arrow-up"></i>
-          
-            <span id="scrollpercent"><span>0</span>%</span>
-          
-        </div>
-      
+	  
+	  
+		<script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+		<script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+		<div class="widget-wrap">
+		  <h3 class="widget-title">Tag Cloud</h3>
+		  <div id="myCanvasContainer" class="widget tagcloud">
+			  <canvas width="250" height="250" id="resCanvas" style="width=100%">
+				  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/" rel="tag">blog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99/" rel="tag">单一职责原则</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="tag-list-count">1</span></li></ul>
+			  </canvas>
+		  </div>
+		</div>
+	  
+
 
     </div>
   </aside>
@@ -742,6 +791,13 @@
       </div>
     </footer>
 
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
     
 
     
