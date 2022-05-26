@@ -68,7 +68,7 @@
 
 <ol>
 <li>把 <a href="https://www.simple.com/">https://www.simple.com</a> 改为自己的域名，即自己申请的域名。</li>
-<li>tls 后面的 <a href="mailto:&#120;&#x78;&#120;&#120;&#x40;&#120;&#x78;&#120;&#46;&#120;&#x78;">&#120;&#x78;&#120;&#120;&#x40;&#120;&#x78;&#120;&#46;&#120;&#x78;</a> 改为自己的邮箱地址，这是用于自动申请 SSL 证书用的。需要注意的是，不需要你自己配置 SSL 证书，而且会自动帮你续签。</li>
+<li>tls 后面的 <a href="mailto:&#120;&#x78;&#x78;&#120;&#x40;&#x78;&#x78;&#120;&#46;&#x78;&#x78;">&#120;&#x78;&#x78;&#120;&#x40;&#x78;&#x78;&#120;&#46;&#x78;&#x78;</a> 改为自己的邮箱地址，这是用于自动申请 SSL 证书用的。需要注意的是，不需要你自己配置 SSL 证书，而且会自动帮你续签。</li>
 <li>localhost:port 请将 port 修改为 Halo 的运行端口，默认为 8090。</li>
 </ol>
 <h4 id="2、修改完成后启动Caddy服务"><a href="#2、修改完成后启动Caddy服务" class="headerlink" title="2、修改完成后启动Caddy服务"></a>2、修改完成后启动Caddy服务</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">开启自启 Caddy 服务</span></span><br><span class="line">systemctl enable caddy</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">启动 Caddy</span></span><br><span class="line">service caddy start</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">停止运行 Caddy</span></span><br><span class="line">service caddy stop</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">重启 Caddy</span></span><br><span class="line">service caddy restart</span><br></pre></td></tr></table></figure>
@@ -88,18 +88,6 @@
       <tags>
         <tag>docker</tag>
         <tag>blog</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>设计模式之单一职责原则</title>
-    <url>/yoon/c32feb96.html</url>
-    <content><![CDATA[<h3 id="1、概念"><a href="#1、概念" class="headerlink" title="1、概念"></a>1、概念</h3>]]></content>
-      <categories>
-        <category>设计模式</category>
-      </categories>
-      <tags>
-        <tag>设计模式</tag>
-        <tag>单一职责原则</tag>
       </tags>
   </entry>
   <entry>
@@ -163,6 +151,18 @@
       <tags>
         <tag>VUe</tag>
         <tag>Element-plus</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>设计模式之单一职责原则</title>
+    <url>/yoon/c32feb96.html</url>
+    <content><![CDATA[<h3 id="1、概念"><a href="#1、概念" class="headerlink" title="1、概念"></a>1、概念</h3>]]></content>
+      <categories>
+        <category>设计模式</category>
+      </categories>
+      <tags>
+        <tag>设计模式</tag>
+        <tag>单一职责原则</tag>
       </tags>
   </entry>
 </search>
